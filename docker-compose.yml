@@ -2,8 +2,9 @@ services:
   nostream:
     build: .
     container_name: nostream
+    env_file:
+      - local.env
     environment:
-      SECRET: changeme
       RELAY_PORT: 8008
       # Master
       NOSTR_CONFIG_DIR: /home/node/.nostr
@@ -36,7 +37,7 @@ services:
       HIDDEN_SERVICE_PORT: 80
       # Enable DEBUG for troubleshooting. Examples:
       # DEBUG: "primary:*"
-      # DEBUG: "worker:*"
+      DEBUG: "worker:*"
       # DEBUG: "knex:query"
     user: node:node
     volumes:
